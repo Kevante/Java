@@ -248,14 +248,16 @@ public class CarList {
     avgMpg - takes no parameters and returns the average MPG across all 
     GasCar objects.
     **************************************************************************/
-    public int avgMpg() {
-        int sum = 0;
+    public double avgMpg() {
+        double sum = 0;
+        int carCount = 0;
         for (int i = 0; i < count; i++) {
             if(isGasCar(carArray[i])) {
                 sum += ((GasCar)carArray[i]).getMPG();
+                carCount++;
             }
         }
-        return sum / (count - 1);
+        return sum / carCount;
     }
     
     /**************************************************************************
@@ -264,7 +266,17 @@ public class CarList {
     model containing the partial model query String. You may use the String 
     contains method in your solution for this method.
     **************************************************************************/
-    
+    public double avgMpgByPartialModel (String partialModel) {
+        double sum = 0;
+        int carCount = 0;
+        for (int i = 0; i < count; i++) {
+            if(carArray[i].getModel().toLowerCase().contains(partialModel.toLowerCase())) {
+                sum += (carArray[i]).getCmbMPG();
+                carCount++;
+            }
+        }
+        return sum / carCount;
+    }
     
     /**************************************************************************
     findClassesByCylinders - takes as input an int specifying number of 
