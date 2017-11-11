@@ -10,7 +10,7 @@ import java.io.File;
 import java.util.Scanner;
 /**
  *
- * @author Stealth Pro
+ * @author Kevin Beltran
  */
 public class CarDBDriver {
 
@@ -91,6 +91,12 @@ public class CarDBDriver {
         * CarList. For each item in the list returned, print a tab followed by 
         * the item followed by a newline.
         ***********************************************************************/
+        System.out.println("Vehicle Classes with 6-Cylinder Cars: ");
+        classes = new String[10];
+        classes = carList.findClassesByCylinders(6);
+        for (int i = 0; i < classes.length; i++) {
+            System.out.println("\t" + classes[i]);
+        }
         
         /***********************************************************************
         * Print "Small SUVs with MPG > 22:" followed by a newline followed by 
