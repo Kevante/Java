@@ -9,7 +9,7 @@ import java.io.File;
 import java.util.Scanner;
 /**
  *
- * @author Stealth Pro
+ * @author Kevin Beltran
  */
 public class Car {
     public String model;           // column Model

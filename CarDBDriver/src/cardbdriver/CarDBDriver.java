@@ -104,6 +104,13 @@ public class CarDBDriver {
         * CarList. For each item in the list returned, print a tab followed by 
         * the item followed by a newline.
         ***********************************************************************/
+        System.out.println("Small SUVs with MPG > 22:");
+        String[] models = new String[10];
+        models = carList.findModelsByClassAndMpg("small SUV", 22);
+        for (int i = 0; i < models.length; i++) {
+            System.out.println("\t" + models[i]);
+        }
+        
         
         /***********************************************************************
         *  Print "Small Cars with MPG > 35:" followed by a newline followed by 
@@ -111,7 +118,11 @@ public class CarDBDriver {
         * CarList. For each item in the list returned, print a tab followed by 
         * the item followed by a newline.
         ***********************************************************************/
-        
+        System.out.println("Small Cars with MPG > 35:");
+        models = new String[10];
+        models = carList.findModelsByClassAndMpg("small car", 35);
+        for (int i = 0; i < models.length; i++) {
+            System.out.println("\t" + models[i]);
+        }
     }
-    
 }

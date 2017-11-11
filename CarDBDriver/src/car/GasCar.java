@@ -7,7 +7,7 @@ package car;
 
 /**
  *
- * @author Stealth Pro
+ * @author Kevin Beltran
  */
 public class GasCar extends Car {
     /**************************************************************************

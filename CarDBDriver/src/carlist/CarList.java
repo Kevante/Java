@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
  *
- * @author Stealth Pro
+ * @author Kevin Beltran
  */
 
 public class CarList {
@@ -316,6 +316,23 @@ public class CarList {
     number of valid elements. The resulting array will be sorted and you may 
     use Arrays.sort for this purpose.
     **************************************************************************/
+    public String[] findModelsByClassAndMpg(String vehicleClass, int minMPG) {
+        int sCount = 0;
+        String[] vehicleModels = new String[sCount];
+        for (int i = 0; i < count; i++) {
+            if (carArray[i].getVehicleClass().equals(vehicleClass)) {
+                if (carArray[i].getCmbMPG() >= minMPG) {
+                    String[] temp = new String[sCount + 1];
+                    System.arraycopy(vehicleModels, 0, temp, 0, vehicleModels.length);
+                    temp[sCount] = carArray[i].getModel();
+                    vehicleModels = new String[sCount + 1];
+                    System.arraycopy( temp, 0, vehicleModels, 0, temp.length );
+                    sCount++;
+                }
+            }
+        }
+        return vehicleModels;
+    }
 }
 
 class SortCarsByPollutionScore implements Comparator<Car> {
