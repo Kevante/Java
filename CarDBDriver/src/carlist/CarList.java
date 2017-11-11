@@ -16,6 +16,7 @@ import java.util.logging.Logger;
  *
  * @author Stealth Pro
  */
+
 public class CarList {
         /*
     You must have a CarList that maintains a sorted array of Car objects. 
@@ -104,7 +105,7 @@ public class CarList {
             }
             in.close(); 
             
-            Arrays.sort(carArray, new SortCars());
+            sortCars();
             setCarArray(temp);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CarList.class.getName()).log(Level.SEVERE, null, ex);
@@ -161,7 +162,7 @@ public class CarList {
         
         carArray = temp;
         count++;
-        //sortCars();
+        sortCars();
     }
     
     // Return false if fuelType is Hydrogen or Electricity.
@@ -224,6 +225,16 @@ public class CarList {
             }
         }
         return dataBase.toString();
+    }
+    
+    public void sortCars () {
+        Comparator<Car> a = Comparator.comparingInt(Car::getPollutionScore);
+        Comparator<Car> b = Comparator.comparing(Car::getModel);
+        Comparator<Car> c = a.thenComparing(b);
+
+        Arrays.sort(carArray, c);
+
+        //assertTrue(Arrays.equals(carArray, sortedCarArray));
     }
     
     /*
