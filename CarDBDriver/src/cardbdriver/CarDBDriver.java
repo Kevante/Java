@@ -38,6 +38,7 @@ public class CarDBDriver {
         * on the CarList followed by a newline. The result should be displayed 
         * with exactly two digits after the decimal point.
         ***********************************************************************/
+        System.out.println("Average MPG All: " + carList.avgMpg());
         
         /* *********************************************************************
         * Print "Average MPG Subaru:" followed by the result of calling 

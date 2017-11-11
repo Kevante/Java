@@ -10,13 +10,13 @@ package car;
  * @author Stealth Pro
  */
 public class GasCar extends Car {
-    /*
+    /**************************************************************************
     A GasCar is any car that does not have a Fuel of Hydrogen or Electricity. 
     Hybrid cars (e.g., Fuel Gasoline/Electricity) are considered type GasCar. 
     GasCar must have at least the following properties: 
     numberCylinders (column Cyl) and 
     mpg (column Cmb MPG). 
-    */
+    **************************************************************************/
     public String numberCylinders;     // column Cyl
     public int mpg;                 // column Cmb MPG
     
@@ -61,6 +61,6 @@ public class GasCar extends Car {
         combCO2 = baseCar.getCombCO2();
         
         this.numberCylinders = gasCar.getCylinders();
-        this.mpg = gasCar.getCmbMPG();
+        this.mpg = cmbMPG;
     }
 }

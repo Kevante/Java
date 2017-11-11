@@ -166,10 +166,10 @@ public class Car {
         this.hwyMPG = Integer.parseInt(hwyMPG);
     }
     
-    /*
+    /**************************************************************************
     For cars with two values for Cmb MPG 
     the value used should be the first value (to the left of the "/").
-    */
+    **************************************************************************/
     public void setCmbMPG(String cmbMPG) {
         Character ch2 = new Character('/');
         for (int i = 0; i < cmbMPG.length(); i++) {

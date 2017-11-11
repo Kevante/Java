@@ -10,11 +10,11 @@ package car;
  * @author Stealth Pro
  */
 public class GreenCar extends Car {
-    /*
+    /**************************************************************************
     A GreenCar is a car with Fuel either Hydrogen or Electricity. 
     GreenCar will have the property fuelType (column Fuel). 
     This will either be "Hydrogen" or "Electricity".
-    */
+    **************************************************************************/
     public String fuelType;         // column Fuel
     
     // getters

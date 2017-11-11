@@ -115,7 +115,7 @@ public class CarList {
             in.close(); 
             
             setCarArray(temp);
-            //sortCars();
+            sortCars();
         }
     }
     
@@ -236,7 +236,7 @@ public class CarList {
     sorted in the list in the reverse order in which they appear in the 
     original data file.
     **************************************************************************/
-    public void sortCars () {
+    public void sortCars() {
         Comparator<Car> a = Comparator.comparingInt(Car::getPollutionScore);
         Comparator<Car> b = Comparator.comparing(Car::getModel, reverseOrder());
         Comparator<Car> c = a.thenComparing(b);
@@ -248,6 +248,15 @@ public class CarList {
     avgMpg - takes no parameters and returns the average MPG across all 
     GasCar objects.
     **************************************************************************/
+    public int avgMpg() {
+        int sum = 0;
+        for (int i = 0; i < count; i++) {
+            if(isGasCar(carArray[i])) {
+                sum += ((GasCar)carArray[i]).getMPG();
+            }
+        }
+        return sum / (count - 1);
+    }
     
     /**************************************************************************
     avgMpgByPartialModel - takes as input a String with a partial model 
@@ -255,6 +264,7 @@ public class CarList {
     model containing the partial model query String. You may use the String 
     contains method in your solution for this method.
     **************************************************************************/
+    
     
     /**************************************************************************
     findClassesByCylinders - takes as input an int specifying number of 
