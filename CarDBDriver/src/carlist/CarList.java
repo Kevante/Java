@@ -287,7 +287,26 @@ public class CarList {
     valid elements. The resulting array will be sorted and you may use 
     Arrays.sort for this purpose.
     **************************************************************************/
-    
+    public String[] findClassesByCylinders (int numCylinders) {
+        int sCount = 0;
+        String[] vehicleClasses = new String[sCount];
+        StringBuffer classesString = new StringBuffer();
+        for (int i = 0; i < count; i++) {
+            if(carArray[i].getCylinders().equals(Integer.toString(numCylinders))) {
+                if (!classesString.toString().contains(carArray[i].getVehicleClass())) {
+                    String[] temp = new String[sCount + 1];
+                    System.arraycopy( vehicleClasses, 0, temp, 0, vehicleClasses.length );
+                    temp[sCount] = carArray[i].getVehicleClass();
+                    vehicleClasses = new String[sCount + 1];
+                    System.arraycopy( temp, 0, vehicleClasses, 0, temp.length );
+                    classesString.append(carArray[i].getVehicleClass());
+                    sCount++;
+                }
+            }
+        }
+        Arrays.sort(vehicleClasses);
+        return vehicleClasses;
+    }
     /**************************************************************************
     findModelsByClassAndMpg - takes as input a target vehicle class and a 
     minimum MPG and returns a String[] containing the models of all vehicles 

@@ -58,6 +58,9 @@ public class CarDBDriver {
         The result should be displayed with exactly two digits after the 
         decimal point.
         ***********************************************************************/
+        System.out.printf("Average MPG Toyota: ");
+        System.out.printf("%.2f", carList.avgMpgByPartialModel("TOYOTA"));
+        System.out.println();
         
         /***********************************************************************
         * Print "Average MPG Ferrari:" followed by the result of calling 
@@ -65,6 +68,9 @@ public class CarDBDriver {
         * The result should be displayed with exactly two digits after the 
         * decimal point.
         ***********************************************************************/
+        System.out.printf("Average MPG Ferrari: ");
+        System.out.printf("%.2f", carList.avgMpgByPartialModel("FERRARI"));
+        System.out.println();
         
         /***********************************************************************
         * Print "Vehicle Classes with 4-Cylinder Cars:" followed by a newline 
@@ -72,6 +78,12 @@ public class CarDBDriver {
         * CarList. For each item in the list returned, print a tab followed by 
         * the item followed by a newline.
         ***********************************************************************/
+        System.out.println("Vehicle Classes with 4-Cylinder Cars: ");
+        String[] classes = new String[10];
+        classes = carList.findClassesByCylinders(4);
+        for (int i = 0; i < classes.length; i++) {
+            System.out.println("\t" + classes[i]);
+        }
         
         /***********************************************************************
         * Print "Vehicle Classes with 6-Cylinder Cars:" followed by a newline 
