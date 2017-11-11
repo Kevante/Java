@@ -63,7 +63,7 @@ public class CarList {
             while (in.hasNextLine()) {
                 // if full, double size
                 if (isFull()) {
-                    temp = doubleSize(temp);
+                    temp = increaseSize(temp);
                     setCarArray(temp);
                     temp = new Car[size];
                     temp = getCarArray();
@@ -104,7 +104,7 @@ public class CarList {
             }
             in.close(); 
             
-            //sortCars();
+            Arrays.sort(carArray, new SortCars());
             setCarArray(temp);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CarList.class.getName()).log(Level.SEVERE, null, ex);
@@ -133,8 +133,8 @@ public class CarList {
     }
     
     // doubles the size of the carList array
-    Car[] doubleSize (Car[] carArray) {
-        this.size *= 2;
+    Car[] increaseSize (Car[] carArray) {
+        this.size += 1;
         Car[] temp = new Car[size];
         System.arraycopy(carArray, 0, temp, 0, count);
         
@@ -150,7 +150,7 @@ public class CarList {
     */
     void addCar(Car car) {
         if (isFull()) {
-            this.carArray = doubleSize(this.carArray);
+            this.carArray = increaseSize(this.carArray);
         }
         
         Car[] temp = new Car[size];
@@ -161,41 +161,7 @@ public class CarList {
         
         carArray = temp;
         count++;
-        sortCars();
-    }
-    
-    /*
-    Car objects are sorted first by pollution score. 
-    If two Car objects have the same pollution score 
-    then they will be sorted by model.
-    If two Car objects are equal according to compareTo they will be 
-    sorted in the list in the reverse order in which they appear in the 
-    original data file.
-    */
-    public void sortCars() {
-        // Car objects are sorted first by pollution score. 
-        // If two Car objects have the same pollution score, sort by model.
-        Car lowest = new Car();
-        Car next = new Car();
-        int nLoc = 0;
-        for (int loc = 0; loc < count; loc++) {
-            lowest = carArray[loc];
-            nLoc = loc;
-            for (int i = loc + 1; i < count; i++) {
-                if (lowest.getPollutionScore() == next.getPollutionScore()) {
-                    if (lowest.getModel().compareTo(next.getModel()) > 0) {
-                        lowest = next;
-                        nLoc = i;
-                    }
-                }
-                if (lowest.getPollutionScore() > next.getPollutionScore()) {
-                        lowest = next;
-                        nLoc = i;
-                }
-            }
-            carArray[nLoc] = new Car(carArray[loc]);
-            carArray[loc] = new Car(lowest);
-        }
+        //sortCars();
     }
     
     // Return false if fuelType is Hydrogen or Electricity.
@@ -291,4 +257,26 @@ public class CarList {
     number of valid elements. The resulting array will be sorted and you may 
     use Arrays.sort for this purpose.
     */
+}
+
+/*
+    Car objects are sorted first by pollution score. 
+    If two Car objects have the same pollution score 
+    then they will be sorted by model.
+    If two Car objects are equal according to compareTo they will be 
+    sorted in the list in the reverse order in which they appear in the 
+    original data file.
+*/
+class SortCars implements Comparator<Car> {
+    // Car objects are sorted first by pollution score. 
+    public int compare(Car a, Car b) {
+        return a.getPollutionScore() - b.getPollutionScore();
+    }
+}
+
+class SortByModel implements Comparator<Car> {
+    // If two Car objects have the same pollution score, sort by model
+    public int compare(Car a, Car b) {
+        return a.getModel().compareTo(b.getModel());
+    }
 }

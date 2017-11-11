@@ -87,11 +87,6 @@ public class CarDBDriver {
         * the item followed by a newline.
         ***********************************************************************/
         
-        /***********************************************************************
-        *  Your output must exactly match the following: p3output.txt All 
-        * spacing, indentation, and ordering must exactly match the result.
-        ***********************************************************************/
-        
     }
     
 }
